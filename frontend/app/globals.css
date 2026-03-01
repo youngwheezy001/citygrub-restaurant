@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-orange: #f97316;
+  --color-brand-charcoal: #1c1917;
+  --color-brand-surface: #292524;
+  --color-brand-text: #f5f5f4;
+  --color-brand-muted: #a8a29e;
+}
+
+/* --- 1. SMOOTH SCROLLING --- */
+html {
+  scroll-behavior: smooth; 
+}
+
+body {
+  background-color: var(--color-brand-charcoal);
+  color: var(--color-brand-text);
+}
+
+/* --- 2. WATERFALL MENU ANIMATION --- */
+/* --- AMPLIFIED WATERFALL ANIMATION --- */
+@keyframes cascade {
+  0% { 
+    opacity: 0; 
+    transform: translateY(50px) scale(0.95); /* Starts lower and slightly smaller */
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); /* Snaps into place at full size */
+  }
+}
+
+.waterfall-item {
+  animation: cascade 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; /* Slower, smoother "spring" timing */
+  opacity: 0;
+  will-change: transform, opacity; /* Optimizes performance for smoother movement */
+}
+/* --- REACT BITS: SPINNING BORDER ANIMATION --- */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
